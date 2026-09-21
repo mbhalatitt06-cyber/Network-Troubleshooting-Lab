@@ -138,38 +138,17 @@ It can help an IT Support technician investigate where communication may be expe
 
 ## 📸 Hands-On Evidence
 
-Screenshots demonstrating the practical work performed in this lab will be added here.
+### 1. Detailed IP Configuration
+![IP Configuration](ipconfig-all.png)
 
-### 1. IP Configuration
+### 2. Network Adapter Status
+![Network Adapter Status](network-adapter-status.png)
 
-The `ipconfig` command was used to inspect the workstation's IP configuration.
+### 3. Network Path Testing
+![Traceroute Test](tracert.png)
 
-![IP Configuration](screenshots/ipconfig.png)
-
----
-
-### 2. Network Connectivity
-
-The `ping` command was used to test connectivity to an external destination.
-
-![Ping Test](screenshots/ping.png)
-
----
-
-### 3. DNS Resolution
-
-The `nslookup` command was used to test DNS name resolution.
-
-![DNS Lookup](screenshots/nslookup.png)
-
----
-
-### 4. Network Path
-
-The `tracert` command was used to examine the network path to a destination.
-
-![Traceroute Test](screenshots/tracert.png)
-
+### 4. DHCP Troubleshooting
+![DHCP Troubleshooting](dhcp-renew.png)
 ---
 
 ## 📚 Skills Demonstrated
