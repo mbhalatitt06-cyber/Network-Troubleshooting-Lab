@@ -15,14 +15,14 @@ This project was created as part of my ongoing development in IT Support, networ
 
 The objectives of this lab are to:
 
-- Understand basic IP configuration
-- Troubleshoot network connectivity
-- Test communication between devices
-- Troubleshoot DNS resolution
-- Understand DHCP configuration
+- Understand detailed IP configuration
+- Check network adapter status
+- Troubleshoot DHCP configuration
+- Release and renew DHCP network configuration
 - Trace network paths
 - Interpret basic network diagnostic results
-- Document troubleshooting procedures
+- Document network troubleshooting procedures
+
 
 ---
 
@@ -30,11 +30,11 @@ The objectives of this lab are to:
 
 - Windows 10/11
 - Command Prompt
-- `ipconfig`
 - `ipconfig /all`
-- `ping`
-- `nslookup`
+- `netsh interface show interface`
 - `tracert`
+- `ipconfig /release`
+- `ipconfig /renew`
 
 ---
 
@@ -54,73 +54,94 @@ I use a structured troubleshooting approach when investigating network problems:
 
 ## 🧪 Network Troubleshooting Scenarios
 
-### Scenario 1 — No Network Connectivity
+### Scenario 1 — Check Detailed IP Configuration
 
 #### Problem
 
-A user reports that their computer cannot access network resources or the internet.
+A technician needs to examine the computer's complete network configuration to identify IP addressing, DHCP, DNS, and gateway information.
 
-#### Step 1 — Check IP Configuration
+#### Command used
 
-The first step is to check whether the computer has a valid IP configuration.
+`ipconfig /all`
 
-**Command used:** `ipconfig`
+#### Purpose
+
+The `ipconfig /all` command displays detailed network configuration information for the computer's network adapters.
 
 #### Information Checked
 
-- IPv4 address
+- IPv4 configuration
 - Subnet mask
 - Default gateway
-
-#### What I Am Looking For
-
-A valid IP configuration should contain an IPv4 address, subnet mask, and default gateway appropriate for the network.
-
----
-
-### Scenario 2 — Test Network Connectivity
-
-After checking the IP configuration, the next step is to test connectivity.
-
-**Command used:** `ping 8.8.8.8`
-
-#### Purpose
-
-The `ping` command is used to test whether the computer can communicate with the destination.
-
-#### Results
-
-The test returned successful replies with no packet loss, demonstrating connectivity to the destination.
+- DHCP information
+- DNS configuration
+- Network adapter details
 
 ---
 
-### Scenario 3 — DNS Troubleshooting
+### Scenario 2 — Check Network Adapter Status
 
-A computer may have internet connectivity but still be unable to access websites if DNS resolution is not working correctly.
+#### Problem
 
-**Command used:** `nslookup google.com`
+A technician needs to determine whether network interfaces are enabled, connected, or disconnected.
+
+#### Command used
+
+`netsh interface show interface`
 
 #### Purpose
 
-The `nslookup` command is used to query DNS and determine whether a domain name can be resolved to an IP address.
+This command displays the administrative state and connection state of available network interfaces.
 
-#### Results
+#### Information Checked
 
-The DNS query successfully resolved `google.com`, demonstrating that DNS name resolution was functioning during the test.
+- Administrative state
+- Connection state
+- Interface type
+- Interface name
 
 ---
 
-### Scenario 4 — Trace Network Path
+### Scenario 3 — Trace Network Path
 
-The `tracert` command can be used to identify the path traffic takes from the computer to a destination.
+#### Problem
 
-**Command used:** `tracert google.com`
+A user is experiencing network communication problems and the technician needs to examine the path traffic takes to a destination.
+
+#### Command used
+
+`tracert google.com`
 
 #### Purpose
 
-`tracert` helps identify the network hops between the local computer and the destination.
+The `tracert` command identifies the network hops between the local computer and the destination.
 
 It can help an IT Support technician investigate where communication may be experiencing delays or failure.
+
+---
+
+### Scenario 4 — DHCP Troubleshooting
+
+#### Problem
+
+A computer may experience network connectivity problems if it does not have a valid DHCP-assigned network configuration.
+
+#### Commands used
+
+`ipconfig /release`
+
+`ipconfig /renew`
+
+#### Purpose
+
+`ipconfig /release` releases the current DHCP configuration, while `ipconfig /renew` requests a new network configuration from the DHCP server.
+
+#### Troubleshooting Process
+
+1. Release the existing DHCP configuration.
+2. Request a new DHCP configuration.
+3. Verify that the network adapter receives valid network settings.
+4. Confirm that network connectivity is restored.
 
 ---
 
@@ -128,11 +149,11 @@ It can help an IT Support technician investigate where communication may be expe
 
 | Command | Purpose |
 |---|---|
-| `ipconfig` | Displays IP configuration |
 | `ipconfig /all` | Displays detailed network configuration |
-| `ping` | Tests network connectivity |
-| `nslookup` | Tests DNS name resolution |
+| `netsh interface show interface` | Displays network adapter status |
 | `tracert` | Displays the network path to a destination |
+| `ipconfig /release` | Releases the current DHCP configuration |
+| `ipconfig /renew` | Requests a new DHCP configuration |
 
 ---
 
@@ -173,9 +194,9 @@ This project demonstrates practical knowledge of:
 
 I plan to expand this lab with:
 
+- Ping connectivity testing
+- DNS troubleshooting using nslookup
 - Subnetting exercises
-- DHCP troubleshooting
-- DNS troubleshooting scenarios
 - Static IP configuration
 - Network diagrams
 - Packet capture analysis
